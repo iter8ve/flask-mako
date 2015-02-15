@@ -156,6 +156,7 @@ class MakoTemplates(object):
         app.config.setdefault('MAKO_TRANSLATE_EXCEPTIONS', True)
         app.config.setdefault('MAKO_DEFAULT_FILTERS', None)
         app.config.setdefault('MAKO_PREPROCESSOR', None)
+        app.config.setdefault('MAKO_LEXER_CLS', None)
 
 
 def _create_lookup(app):
@@ -183,7 +184,9 @@ def _create_lookup(app):
         'filesystem_checks': app.config['MAKO_FILESYSTEM_CHECKS'],
         'default_filters': app.config['MAKO_DEFAULT_FILTERS'],
         'preprocessor': app.config['MAKO_PREPROCESSOR'],
+        'lexer_cls': app.config['MAKO_LEXER_CLS'],
     }
+
     if isinstance(app.template_folder, (list, tuple)):
         paths = [os.path.join(app.root_path, tf) for tf in app.template_folder]
     else:
